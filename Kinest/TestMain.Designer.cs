@@ -32,6 +32,7 @@
             this.btnOpenUrl = new System.Windows.Forms.Button();
             this.cbProtocol = new System.Windows.Forms.ComboBox();
             this.btnCloseBrowsers = new System.Windows.Forms.Button();
+            this.btnTestSqlInsert = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtUrl
@@ -74,11 +75,22 @@
             this.btnCloseBrowsers.UseVisualStyleBackColor = true;
             this.btnCloseBrowsers.Click += new System.EventHandler(this.btnCloseBrowsers_Click);
             // 
+            // btnTestSqlInsert
+            // 
+            this.btnTestSqlInsert.Location = new System.Drawing.Point(419, 12);
+            this.btnTestSqlInsert.Name = "btnTestSqlInsert";
+            this.btnTestSqlInsert.Size = new System.Drawing.Size(87, 23);
+            this.btnTestSqlInsert.TabIndex = 5;
+            this.btnTestSqlInsert.Text = "Insert URL";
+            this.btnTestSqlInsert.UseVisualStyleBackColor = true;
+            this.btnTestSqlInsert.Click += new System.EventHandler(this.btnTestSqlInsert_Click);
+            // 
             // TestMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnTestSqlInsert);
             this.Controls.Add(this.btnCloseBrowsers);
             this.Controls.Add(this.cbProtocol);
             this.Controls.Add(this.btnOpenUrl);
@@ -97,6 +109,7 @@
         private System.Windows.Forms.Button btnOpenUrl;
         private System.Windows.Forms.ComboBox cbProtocol;
         private System.Windows.Forms.Button btnCloseBrowsers;
+        private System.Windows.Forms.Button btnTestSqlInsert;
     }
 }
 

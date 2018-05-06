@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 
-namespace Library
+namespace KinestOps
 {
     public class TestIt
     {
@@ -21,7 +21,7 @@ namespace Library
                 {
                     //if (driverFF.WindowHandles.Count < 0 || driverFF.ToString() == null)
                     //{
-                        driverFF = new FirefoxDriver(ffDriverService);
+                    driverFF = new FirefoxDriver(ffDriverService);
                     //}
                 }
                 return driverFF;
@@ -53,9 +53,13 @@ namespace Library
             DriverFF.Navigate().GoToUrl(url);
             DriverCH.Navigate().GoToUrl(url);
         }
-
+        /**
+         * 
+         *
+         **/
         public void closeBrowsers()
         {
+
             DriverFF.Close();
             DriverCH.Close();
         }

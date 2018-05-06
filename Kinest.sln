@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinest", "Kinest\Kinest.csproj", "{334023C6-B4BE-4A26-AD73-617A339A2D51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{7CBD8A1C-38CE-4AA7-9B62-D5B637B67C86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinestLibrary", "KinestOps\KinestLibrary.csproj", "{43F4D989-4F97-4872-BF3D-E688C8A2B36F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{334023C6-B4BE-4A26-AD73-617A339A2D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{334023C6-B4BE-4A26-AD73-617A339A2D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{334023C6-B4BE-4A26-AD73-617A339A2D51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CBD8A1C-38CE-4AA7-9B62-D5B637B67C86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CBD8A1C-38CE-4AA7-9B62-D5B637B67C86}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CBD8A1C-38CE-4AA7-9B62-D5B637B67C86}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CBD8A1C-38CE-4AA7-9B62-D5B637B67C86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F4D989-4F97-4872-BF3D-E688C8A2B36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F4D989-4F97-4872-BF3D-E688C8A2B36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F4D989-4F97-4872-BF3D-E688C8A2B36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F4D989-4F97-4872-BF3D-E688C8A2B36F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

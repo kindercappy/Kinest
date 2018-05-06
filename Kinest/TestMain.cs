@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Library;
+//using Library;
+using KinestOps;
 using OpenQA.Selenium.PhantomJS;
 
 namespace Kinest
@@ -22,9 +23,8 @@ namespace Kinest
 
         private void TestMain_Load(object sender, EventArgs e)
         {
-            //var driverService = PhantomJSDriverService.CreateDefaultService();
-            //driverService.HideCommandPromptWindow = true;
-            //var driver = new PhantomJSDriver(driverService);
+            var myConnection = Common.GetConnection();
+            
             this.cbProtocol.SelectedIndex = 0;
         }
 
@@ -33,12 +33,20 @@ namespace Kinest
             string url = this.txtUrl.Text;
             string protocol = this.cbProtocol.Text;
             string fullUrl = protocol + "://" + url;
-           testUrl = new TestIt(fullUrl);
+            testUrl = new TestIt(fullUrl);
+
         }
 
         private void btnCloseBrowsers_Click(object sender, EventArgs e)
         {
-            testUrl.DriverFF.Close();
+            testUrl.closeBrowsers();
+        }
+
+        private void btnTestSqlInsert_Click(object sender, EventArgs e)
+        {
+            URLOps url = new URLOps(this.cbProtocol.Text, this.txtUrl.Text);
+            string message = url.AddUrl();
+            MessageBox.Show(message);
         }
     }
 }
