@@ -30,7 +30,7 @@ namespace Kinest
 
         private void btnOpenUrl_Click(object sender, EventArgs e)
         {
-            string url = this.txtUrl.Text;
+            string url = this.cbUrl.Text;
             string protocol = this.cbProtocol.Text;
             string fullUrl = protocol + "://" + url;
             testUrl = new TestIt(fullUrl);
@@ -44,9 +44,33 @@ namespace Kinest
 
         private void btnTestSqlInsert_Click(object sender, EventArgs e)
         {
-            URLOps url = new URLOps(this.cbProtocol.Text, this.txtUrl.Text);
+            URLOps url = new URLOps(this.cbProtocol.Text, this.cbUrl.Text);
             string message = url.AddUrl();
             MessageBox.Show(message);
+        }
+
+        private void btnShowUrls_Click(object sender, EventArgs e)
+        {
+            URLOps url = new URLOps();
+        }
+
+        private void cbUrl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbUrl_TextChanged(object sender, EventArgs e)
+        {
+            this.cbUrl.Items.Clear();
+            List<string> urls = new List<string>();
+            URLOps url = new URLOps();
+            urls = url.getMatchingUrls(this.cbUrl.Text);
+            Console.WriteLine(this.cbUrl.Text);
+            this.cbUrl.DroppedDown = true;
+            foreach (var item in urls)
+            {
+                this.cbUrl.Items.Add(url);
+            }
         }
     }
 }

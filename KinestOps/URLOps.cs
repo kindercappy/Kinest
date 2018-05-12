@@ -14,13 +14,17 @@ namespace KinestOps
         private string protocol;
         private string url;
 
-        public string Protocol { get => protocol; set => protocol = value; }
-        public string Url { get => url; set => url = value; }
+        public string currProtocol { get => protocol; set => protocol = value; }
+        public string currUrl { get => url; set => url = value; }
 
         public URLOps(string protocol, string url)
         {
-            Protocol = protocol;
-            Url = url;
+            currProtocol = protocol;
+            currUrl = url;
+        }
+        public URLOps()
+        {
+
         }
         /**
          * Method to add url
@@ -28,32 +32,41 @@ namespace KinestOps
          **/
         public string AddUrl()
         {
-            int checkIfUrlExists = GetUrl();
+            int checkIfUrlExists = this.checkIfUrlExists();
+            if (checkIfUrlExists == 1)
+            {
+                return "Url already exists";
+            }
             int addedOrNot = AddViaSP();
             string messageString = "Cant add URL";
-            //MessageBox.Show(addedOrNot.ToString());
-            if (addedOrNot == 0)
-            {
-                messageString = "Cant add URL";
-            }
-            else
+            if (addedOrNot != 0)
             {
                 messageString = "URL Added Successfully";
             }
-
             return messageString;
         }
 
 
-        private int GetUrl()
+        private int checkIfUrlExists()
         {
             int urlFoundOrNot = 0;
-
+            List<string> urls = getUrlData();
+            foreach (var url in urls)
+            {
+                if (url == currUrl )
+                {
+                    urlFoundOrNot = 1;
+                }
+            }
 
             return urlFoundOrNot;
         }
-        private void getUrlData()
+        /**
+         * Get all the URL data
+         **/
+        private List<string> getUrlData()
         {
+            List<string> urls = new List<string>();
             using (SqlCommand cmd = new SqlCommand())
             {
                 SqlDataReader reader;
@@ -62,13 +75,31 @@ namespace KinestOps
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 reader = cmd.ExecuteReader();
-
-                MessageBox.Show(reader.ToString());
+                while (reader.Read())
+                {
+                    urls.Add((string)reader["url"]);
+                }
             }
+            //foreach (var url in urls)
+            //{
+
+            //    Console.WriteLine(url);
+            //}
+            //Console.ReadLine();
+            return urls;
         }
         /**
-         * Add the url via a stored procedure in the suitable table
-         **/
+         * Get all the matching urls for the url initial supplied
+         **/    
+        public List<string> getMatchingUrls(string urlInitial)
+        {
+            List<string> allUrls = new List<string>();
+            return allUrls;
+        }
+
+        /**
+* Add the url via a stored procedure in the suitable table
+**/
         private int AddViaSP()
         {
             int addedOrNot = 0;
@@ -78,11 +109,11 @@ namespace KinestOps
                 cmd.CommandText = dbInfo.tbSitesStoredAddSp;
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                SqlParameter sProtocol = new SqlParameter(dbInfo.tbSitesStoredSpColProtocol, Protocol);
+                SqlParameter sProtocol = new SqlParameter(dbInfo.tbSitesStoredSpColProtocol, currProtocol);
                 sProtocol.SqlDbType = System.Data.SqlDbType.NVarChar;
                 cmd.Parameters.Add(sProtocol);
 
-                SqlParameter sUrl = new SqlParameter(dbInfo.tbSitesStoredSpColUrl, Url);
+                SqlParameter sUrl = new SqlParameter(dbInfo.tbSitesStoredSpColUrl, currUrl);
                 sUrl.SqlDbType = System.Data.SqlDbType.NVarChar;
                 cmd.Parameters.Add(sUrl);
 
