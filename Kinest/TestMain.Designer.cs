@@ -28,12 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnOpenUrl = new System.Windows.Forms.Button();
             this.cbProtocol = new System.Windows.Forms.ComboBox();
             this.btnCloseBrowsers = new System.Windows.Forms.Button();
-            this.btnTestSqlInsert = new System.Windows.Forms.Button();
-            this.btnShowUrls = new System.Windows.Forms.Button();
             this.cbUrl = new System.Windows.Forms.ComboBox();
+            this.dgvSitesStoredInfo = new System.Windows.Forms.DataGridView();
+            this.kinestDataSet = new Kinest.kinestDataSet();
+            this.sitesStoredBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sitesStoredTableAdapter = new Kinest.kinestDataSetTableAdapters.sitesStoredTableAdapter();
+            this.siteIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.protocolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSitesStoredInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinestDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sitesStoredBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOpenUrl
@@ -68,26 +77,6 @@
             this.btnCloseBrowsers.UseVisualStyleBackColor = true;
             this.btnCloseBrowsers.Click += new System.EventHandler(this.btnCloseBrowsers_Click);
             // 
-            // btnTestSqlInsert
-            // 
-            this.btnTestSqlInsert.Location = new System.Drawing.Point(447, 12);
-            this.btnTestSqlInsert.Name = "btnTestSqlInsert";
-            this.btnTestSqlInsert.Size = new System.Drawing.Size(87, 23);
-            this.btnTestSqlInsert.TabIndex = 5;
-            this.btnTestSqlInsert.Text = "Insert URL";
-            this.btnTestSqlInsert.UseVisualStyleBackColor = true;
-            this.btnTestSqlInsert.Click += new System.EventHandler(this.btnTestSqlInsert_Click);
-            // 
-            // btnShowUrls
-            // 
-            this.btnShowUrls.Location = new System.Drawing.Point(540, 12);
-            this.btnShowUrls.Name = "btnShowUrls";
-            this.btnShowUrls.Size = new System.Drawing.Size(87, 23);
-            this.btnShowUrls.TabIndex = 6;
-            this.btnShowUrls.Text = "Show URL\'s";
-            this.btnShowUrls.UseVisualStyleBackColor = true;
-            this.btnShowUrls.Click += new System.EventHandler(this.btnShowUrls_Click);
-            // 
             // cbUrl
             // 
             this.cbUrl.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -103,20 +92,75 @@
             this.cbUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbUrl_KeyDown);
             this.cbUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbUrl_KeyUp);
             // 
+            // dgvSitesStoredInfo
+            // 
+            this.dgvSitesStoredInfo.AutoGenerateColumns = false;
+            this.dgvSitesStoredInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSitesStoredInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.siteIdDataGridViewTextBoxColumn,
+            this.protocolDataGridViewTextBoxColumn,
+            this.urlDataGridViewTextBoxColumn});
+            this.dgvSitesStoredInfo.DataSource = this.sitesStoredBindingSource;
+            this.dgvSitesStoredInfo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvSitesStoredInfo.Location = new System.Drawing.Point(12, 52);
+            this.dgvSitesStoredInfo.Name = "dgvSitesStoredInfo";
+            this.dgvSitesStoredInfo.Size = new System.Drawing.Size(429, 178);
+            this.dgvSitesStoredInfo.TabIndex = 8;
+            this.dgvSitesStoredInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSitesStoredInfo_CellContentClick);
+            // 
+            // kinestDataSet
+            // 
+            this.kinestDataSet.DataSetName = "kinestDataSet";
+            this.kinestDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sitesStoredBindingSource
+            // 
+            this.sitesStoredBindingSource.DataMember = "sitesStored";
+            this.sitesStoredBindingSource.DataSource = this.kinestDataSet;
+            // 
+            // sitesStoredTableAdapter
+            // 
+            this.sitesStoredTableAdapter.ClearBeforeFill = true;
+            // 
+            // siteIdDataGridViewTextBoxColumn
+            // 
+            this.siteIdDataGridViewTextBoxColumn.DataPropertyName = "siteId";
+            this.siteIdDataGridViewTextBoxColumn.HeaderText = "siteId";
+            this.siteIdDataGridViewTextBoxColumn.Name = "siteIdDataGridViewTextBoxColumn";
+            this.siteIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.siteIdDataGridViewTextBoxColumn.Visible = false;
+            this.siteIdDataGridViewTextBoxColumn.Width = 190;
+            // 
+            // protocolDataGridViewTextBoxColumn
+            // 
+            this.protocolDataGridViewTextBoxColumn.DataPropertyName = "protocol";
+            this.protocolDataGridViewTextBoxColumn.HeaderText = "Protocol";
+            this.protocolDataGridViewTextBoxColumn.Name = "protocolDataGridViewTextBoxColumn";
+            this.protocolDataGridViewTextBoxColumn.Width = 180;
+            // 
+            // urlDataGridViewTextBoxColumn
+            // 
+            this.urlDataGridViewTextBoxColumn.DataPropertyName = "url";
+            this.urlDataGridViewTextBoxColumn.HeaderText = "URL";
+            this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
+            this.urlDataGridViewTextBoxColumn.Width = 180;
+            // 
             // TestMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvSitesStoredInfo);
             this.Controls.Add(this.cbUrl);
-            this.Controls.Add(this.btnShowUrls);
-            this.Controls.Add(this.btnTestSqlInsert);
             this.Controls.Add(this.btnCloseBrowsers);
             this.Controls.Add(this.cbProtocol);
             this.Controls.Add(this.btnOpenUrl);
             this.Name = "TestMain";
             this.Text = "Test";
             this.Load += new System.EventHandler(this.TestMain_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSitesStoredInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinestDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sitesStoredBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,9 +169,14 @@
         private System.Windows.Forms.Button btnOpenUrl;
         private System.Windows.Forms.ComboBox cbProtocol;
         private System.Windows.Forms.Button btnCloseBrowsers;
-        private System.Windows.Forms.Button btnTestSqlInsert;
-        private System.Windows.Forms.Button btnShowUrls;
         private System.Windows.Forms.ComboBox cbUrl;
+        private System.Windows.Forms.DataGridView dgvSitesStoredInfo;
+        private kinestDataSet kinestDataSet;
+        private System.Windows.Forms.BindingSource sitesStoredBindingSource;
+        private kinestDataSetTableAdapters.sitesStoredTableAdapter sitesStoredTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siteIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn protocolDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
     }
 }
 

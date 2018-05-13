@@ -51,6 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="kinestDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>kinestDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TestMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +76,17 @@
     <EmbeddedResource Include="TestMain.resx">
       <DependentUpon>TestMain.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="kinestDataSet.xsc">
+      <DependentUpon>kinestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="kinestDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>kinestDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="kinestDataSet.xss">
+      <DependentUpon>kinestDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

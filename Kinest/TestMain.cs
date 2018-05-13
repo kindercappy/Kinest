@@ -16,6 +16,8 @@ namespace Kinest
     public partial class TestMain : Form
     {
         TestIt testUrl;
+        URLOps url = new URLOps();
+
         public TestMain()
         {
             InitializeComponent();
@@ -23,11 +25,9 @@ namespace Kinest
 
         private void TestMain_Load(object sender, EventArgs e)
         {
-            //var myConnection = Common.GetConnection();
-            URLOps url = new URLOps();
-            List<string> urls = url.getUrlData();
-            urls.Sort();
-            this.cbUrl.DataSource = urls;
+            // TODO: This line of code loads data into the 'kinestDataSet.sitesStored' table. You can move, or remove it, as needed.
+            this.sitesStoredTableAdapter.Fill(this.kinestDataSet.sitesStored);
+            PopulateUrlData(false);
             this.cbProtocol.SelectedIndex = 0;
         }
 
@@ -37,7 +37,7 @@ namespace Kinest
             string protocol = this.cbProtocol.Text;
             string fullUrl = protocol + "://" + url;
             testUrl = new TestIt(fullUrl);
-
+            InsertUrl();
         }
 
         private void btnCloseBrowsers_Click(object sender, EventArgs e)
@@ -47,14 +47,11 @@ namespace Kinest
 
         private void btnTestSqlInsert_Click(object sender, EventArgs e)
         {
-            URLOps url = new URLOps(this.cbProtocol.Text, this.cbUrl.Text);
-            string message = url.AddUrl();
-            MessageBox.Show(message);
+            
         }
 
         private void btnShowUrls_Click(object sender, EventArgs e)
         {
-            URLOps url = new URLOps();
         }
 
         private void cbUrl_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,11 +73,25 @@ namespace Kinest
 
         private void cbUrl_Enter(object sender, EventArgs e)
         {
-            URLOps url = new URLOps();
-            List<string> urls = url.getUrlData();
-            urls.Sort();
+            PopulateUrlData(true);
+        }
+        private void PopulateUrlData(bool showDropDown)
+        {
+            IEnumerable<string> urls = url.getUrlData();
             this.cbUrl.DataSource = urls;
-            this.cbUrl.DroppedDown = true;
+            this.cbUrl.DroppedDown = showDropDown;
+        }
+        private void InsertUrl()
+        {
+            url.currProtocol = this.cbProtocol.Text;
+            url.currUrl = this.cbUrl.Text;
+            string message = url.AddUrl();
+            //MessageBox.Show(message);
+        }
+
+        private void dgvSitesStoredInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

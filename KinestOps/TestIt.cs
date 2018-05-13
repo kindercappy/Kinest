@@ -59,9 +59,14 @@ namespace KinestOps
          **/
         public void closeBrowsers()
         {
-
-            DriverFF.Close();
-            DriverCH.Close();
+            if (DriverFF != null)
+            {
+                DriverFF.Quit();
+            }
+            if (DriverCH != null)
+            {
+                DriverCH.Quit();
+            }
         }
     }
 }

@@ -50,7 +50,7 @@ namespace KinestOps
         private int checkIfUrlExists()
         {
             int urlFoundOrNot = 0;
-            List<string> urls = getUrlData();
+            IEnumerable<string> urls = getUrlData();
             foreach (var url in urls)
             {
                 if (url == currUrl )
