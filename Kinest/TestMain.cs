@@ -23,8 +23,11 @@ namespace Kinest
 
         private void TestMain_Load(object sender, EventArgs e)
         {
-            var myConnection = Common.GetConnection();
-            
+            //var myConnection = Common.GetConnection();
+            URLOps url = new URLOps();
+            List<string> urls = url.getUrlData();
+            urls.Sort();
+            this.cbUrl.DataSource = urls;
             this.cbProtocol.SelectedIndex = 0;
         }
 
@@ -56,21 +59,28 @@ namespace Kinest
 
         private void cbUrl_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void cbUrl_TextChanged(object sender, EventArgs e)
         {
-            this.cbUrl.Items.Clear();
-            List<string> urls = new List<string>();
+            //this.cbUrl.DroppedDown = true;
+        }
+
+        private void cbUrl_KeyDown(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void cbUrl_KeyUp(object sender, KeyEventArgs e)
+        {
+        }
+
+        private void cbUrl_Enter(object sender, EventArgs e)
+        {
             URLOps url = new URLOps();
-            urls = url.getMatchingUrls(this.cbUrl.Text);
-            Console.WriteLine(this.cbUrl.Text);
+            List<string> urls = url.getUrlData();
+            urls.Sort();
+            this.cbUrl.DataSource = urls;
             this.cbUrl.DroppedDown = true;
-            foreach (var item in urls)
-            {
-                this.cbUrl.Items.Add(url);
-            }
         }
     }
 }

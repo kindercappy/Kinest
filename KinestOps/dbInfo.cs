@@ -16,6 +16,7 @@ namespace KinestOps
         public static string tbSitesStoredSpColUrl = "@url";
         public static string tbSitesStoredAddSp = "sitesStoredAddSite";
         public static string tbSitesStoredSelectSp = "sitesStoredSelectSites";
-        
+        public static string tbSitesStoredSelectUrlStartingWithSp = "sitesStoredSelectUrlStartingWith";
+
     }
 }

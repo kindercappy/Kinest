@@ -90,16 +90,18 @@
             // 
             // cbUrl
             // 
+            this.cbUrl.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbUrl.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cbUrl.FormattingEnabled = true;
-            this.cbUrl.Items.AddRange(new object[] {
-            "https",
-            "http"});
             this.cbUrl.Location = new System.Drawing.Point(139, 12);
             this.cbUrl.Name = "cbUrl";
             this.cbUrl.Size = new System.Drawing.Size(121, 21);
             this.cbUrl.TabIndex = 7;
             this.cbUrl.SelectedIndexChanged += new System.EventHandler(this.cbUrl_SelectedIndexChanged);
             this.cbUrl.TextChanged += new System.EventHandler(this.cbUrl_TextChanged);
+            this.cbUrl.Enter += new System.EventHandler(this.cbUrl_Enter);
+            this.cbUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbUrl_KeyDown);
+            this.cbUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbUrl_KeyUp);
             // 
             // TestMain
             // 

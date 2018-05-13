@@ -64,7 +64,7 @@ namespace KinestOps
         /**
          * Get all the URL data
          **/
-        private List<string> getUrlData()
+        public List<string> getUrlData()
         {
             List<string> urls = new List<string>();
             using (SqlCommand cmd = new SqlCommand())
@@ -93,8 +93,24 @@ namespace KinestOps
          **/    
         public List<string> getMatchingUrls(string urlInitial)
         {
-            List<string> allUrls = new List<string>();
-            return allUrls;
+            List<string> urls = new List<string>();
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                SqlDataReader reader;
+                cmd.Connection = Common.GetConnection();
+                cmd.CommandText = dbInfo.tbSitesStoredSelectUrlStartingWithSp;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlParameter sUrlStartsWith = new SqlParameter(dbInfo.tbSitesStoredSpColUrl, urlInitial);
+                sUrlStartsWith.SqlDbType = System.Data.SqlDbType.NVarChar;
+                cmd.Parameters.Add(sUrlStartsWith);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    urls.Add((string)reader["url"]);
+                }
+            }
+            return urls;
         }
 
         /**
