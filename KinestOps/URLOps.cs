@@ -1,4 +1,5 @@
-﻿using KinestOps;
+﻿using KinestInterfaces;
+using KinestOps;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace KinestOps
 {
-    public class URLOps
+    public class URLOps: IURLOps
     {
         private string protocol;
         private string url;

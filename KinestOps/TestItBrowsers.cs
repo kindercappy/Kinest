@@ -5,7 +5,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace KinestOps
 {
-    public class TestIt
+    public class TestItBrowsers
     {
         IWebDriver driverFF;
         IWebDriver driverCH;
@@ -41,7 +41,7 @@ namespace KinestOps
             }
         }
 
-        public TestIt(string url)
+        public TestItBrowsers(string url)
         {
             openUrlInBrowsers(url);
         }

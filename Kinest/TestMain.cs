@@ -7,16 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KinestFactory;
+using KinestInterfaces;
 //using Library;
-using KinestOps;
 using OpenQA.Selenium.PhantomJS;
 
 namespace Kinest
 {
     public partial class TestMain : Form
     {
-        TestIt testUrl;
-        URLOps url = new URLOps();
+        //URLOps url = new URLOps();
+        private ITestIt testUrl;
 
         public TestMain()
         {
@@ -36,7 +37,8 @@ namespace Kinest
             string url = this.cbUrl.Text;
             string protocol = this.cbProtocol.Text;
             string fullUrl = protocol + "://" + url;
-            testUrl = new TestIt(fullUrl);
+            testUrl = new TestIt();
+            testUrl.TestUrl(fullUrl);
             InsertUrl();
         }
 
@@ -47,7 +49,7 @@ namespace Kinest
 
         private void btnTestSqlInsert_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnShowUrls_Click(object sender, EventArgs e)
@@ -77,15 +79,15 @@ namespace Kinest
         }
         private void PopulateUrlData(bool showDropDown)
         {
-            IEnumerable<string> urls = url.getUrlData();
-            this.cbUrl.DataSource = urls;
-            this.cbUrl.DroppedDown = showDropDown;
+            //IEnumerable<string> urls = url.getUrlData();
+            //this.cbUrl.DataSource = urls;
+            //this.cbUrl.DroppedDown = showDropDown;
         }
         private void InsertUrl()
         {
-            url.currProtocol = this.cbProtocol.Text;
-            url.currUrl = this.cbUrl.Text;
-            string message = url.AddUrl();
+            //url.currProtocol = this.cbProtocol.Text;
+            //url.currUrl = this.cbUrl.Text;
+            //string message = url.AddUrl();
             //MessageBox.Show(message);
         }
 

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinest", "Kinest\Kinest.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinestLibrary", "KinestOps\KinestLibrary.csproj", "{43F4D989-4F97-4872-BF3D-E688C8A2B36F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinestFactory", "KinestFactory\KinestFactory.csproj", "{6320B9D9-0D2D-4A61-8C35-3347B84C113D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinestInterfaces", "KinestInterfaces\KinestInterfaces.csproj", "{A44A4222-ED6A-41FC-AAE2-18F52B564D35}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{43F4D989-4F97-4872-BF3D-E688C8A2B36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43F4D989-4F97-4872-BF3D-E688C8A2B36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43F4D989-4F97-4872-BF3D-E688C8A2B36F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6320B9D9-0D2D-4A61-8C35-3347B84C113D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6320B9D9-0D2D-4A61-8C35-3347B84C113D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6320B9D9-0D2D-4A61-8C35-3347B84C113D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6320B9D9-0D2D-4A61-8C35-3347B84C113D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A44A4222-ED6A-41FC-AAE2-18F52B564D35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A44A4222-ED6A-41FC-AAE2-18F52B564D35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A44A4222-ED6A-41FC-AAE2-18F52B564D35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A44A4222-ED6A-41FC-AAE2-18F52B564D35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
