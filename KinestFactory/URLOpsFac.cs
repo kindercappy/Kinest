@@ -4,41 +4,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KinestOps;
 
 namespace KinestFactory
 {
-    public class URLOps : IURLOps
+    public class URLOpsFac : IURLOps
     {
+        URLOps urlOps;
         private string protocol;
         private string url;
 
         public string currProtocol { get => protocol; set => protocol = value; }
         public string currUrl { get => url; set => url = value; }
 
-        public URLOps(string protocol, string url)
+        public URLOpsFac(string protocol, string url)
         {
             currProtocol = protocol;
             currUrl = url;
         }
 
-        public URLOps()
-        {
-
-        }
-
         public string AddUrl()
         {
-            throw new NotImplementedException();
+            urlOps = new URLOps(protocol,currUrl);
+            string meessage = urlOps.AddUrl();
+            return meessage;
         }
 
         public List<string> getMatchingUrls(string urlInitial)
         {
-            throw new NotImplementedException();
+            return urlOps.getMatchingUrls(urlInitial);
         }
 
         public List<string> getUrlData()
         {
-            throw new NotImplementedException();
+            return urlOps.getUrlData();
         }
     }
 }

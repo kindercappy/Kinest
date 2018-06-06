@@ -17,7 +17,14 @@ namespace KinestOps
         {
             SqlConnection myConnection;
             myConnection = new SqlConnection(connectionString);
-            myConnection.Open();
+            try
+            {
+                myConnection.Open();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
             //if (myConnection != null && myConnection.State == ConnectionState.Open)
             //{
             //    MessageBox.Show("Connected");
@@ -27,6 +34,25 @@ namespace KinestOps
             //    MessageBox.Show("not connected");
             //}
             return myConnection;
+        }
+        private static bool IsServerConnected(string connectionString)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    return true;
+                }
+                catch (SqlException)
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool CanConnectToDB()
+        {
+            return IsServerConnected(connectionString);
         }
     }
 }

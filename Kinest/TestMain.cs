@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KinestFactory;
-using KinestInterfaces;
 //using Library;
 using OpenQA.Selenium.PhantomJS;
 
@@ -16,8 +15,8 @@ namespace Kinest
 {
     public partial class TestMain : Form
     {
-        //URLOps url = new URLOps();
-        private ITestIt testUrl;
+        URLOpsFac urlOpsFac;
+        private TestUrlFac testUrl;
 
         public TestMain()
         {
@@ -27,18 +26,18 @@ namespace Kinest
         private void TestMain_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'kinestDataSet.sitesStored' table. You can move, or remove it, as needed.
-            this.sitesStoredTableAdapter.Fill(this.kinestDataSet.sitesStored);
+            //this.sitesStoredTableAdapter.Fill(this.kinestDataSet.sitesStored);
             PopulateUrlData(false);
             this.cbProtocol.SelectedIndex = 0;
         }
 
         private void btnOpenUrl_Click(object sender, EventArgs e)
         {
-            string url = this.cbUrl.Text;
-            string protocol = this.cbProtocol.Text;
-            string fullUrl = protocol + "://" + url;
-            testUrl = new TestIt();
-            testUrl.TestUrl(fullUrl);
+            //string url = this.cbUrl.Text;
+            //string protocol = this.cbProtocol.Text;
+            //string fullUrl = protocol + "://" + url;
+            //testUrl = new TestUrlFac();
+            //testUrl.TestUrl(fullUrl);
             InsertUrl();
         }
 
@@ -85,10 +84,9 @@ namespace Kinest
         }
         private void InsertUrl()
         {
-            //url.currProtocol = this.cbProtocol.Text;
-            //url.currUrl = this.cbUrl.Text;
-            //string message = url.AddUrl();
-            //MessageBox.Show(message);
+            urlOpsFac = new URLOpsFac(this.cbProtocol.Text, this.cbUrl.Text);
+            string message = urlOpsFac.AddUrl();
+            MessageBox.Show(message);
         }
 
         private void dgvSitesStoredInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)

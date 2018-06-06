@@ -40,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestUrl.cs" />
-    <Compile Include="URLOps.cs" />
+    <Compile Include="TestUrlFac.cs" />
+    <Compile Include="URLOpsFac.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

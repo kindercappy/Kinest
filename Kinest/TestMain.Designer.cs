@@ -34,15 +34,15 @@
             this.btnCloseBrowsers = new System.Windows.Forms.Button();
             this.cbUrl = new System.Windows.Forms.ComboBox();
             this.dgvSitesStoredInfo = new System.Windows.Forms.DataGridView();
-            this.kinestDataSet = new Kinest.kinestDataSet();
-            this.sitesStoredBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sitesStoredTableAdapter = new Kinest.kinestDataSetTableAdapters.sitesStoredTableAdapter();
             this.siteIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.protocolDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sitesStoredBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.kinestDataSet = new Kinest.kinestDataSet();
+            this.sitesStoredTableAdapter = new Kinest.kinestDataSetTableAdapters.sitesStoredTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSitesStoredInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kinestDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sitesStoredBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinestDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOpenUrl
@@ -86,6 +86,7 @@
             this.cbUrl.Name = "cbUrl";
             this.cbUrl.Size = new System.Drawing.Size(121, 21);
             this.cbUrl.TabIndex = 7;
+            this.cbUrl.Text = "round.glass";
             this.cbUrl.SelectedIndexChanged += new System.EventHandler(this.cbUrl_SelectedIndexChanged);
             this.cbUrl.TextChanged += new System.EventHandler(this.cbUrl_TextChanged);
             this.cbUrl.Enter += new System.EventHandler(this.cbUrl_Enter);
@@ -107,20 +108,6 @@
             this.dgvSitesStoredInfo.Size = new System.Drawing.Size(429, 178);
             this.dgvSitesStoredInfo.TabIndex = 8;
             this.dgvSitesStoredInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSitesStoredInfo_CellContentClick);
-            // 
-            // kinestDataSet
-            // 
-            this.kinestDataSet.DataSetName = "kinestDataSet";
-            this.kinestDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sitesStoredBindingSource
-            // 
-            this.sitesStoredBindingSource.DataMember = "sitesStored";
-            this.sitesStoredBindingSource.DataSource = this.kinestDataSet;
-            // 
-            // sitesStoredTableAdapter
-            // 
-            this.sitesStoredTableAdapter.ClearBeforeFill = true;
             // 
             // siteIdDataGridViewTextBoxColumn
             // 
@@ -145,6 +132,20 @@
             this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
             this.urlDataGridViewTextBoxColumn.Width = 180;
             // 
+            // sitesStoredBindingSource
+            // 
+            this.sitesStoredBindingSource.DataMember = "sitesStored";
+            this.sitesStoredBindingSource.DataSource = this.kinestDataSet;
+            // 
+            // kinestDataSet
+            // 
+            this.kinestDataSet.DataSetName = "kinestDataSet";
+            this.kinestDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sitesStoredTableAdapter
+            // 
+            this.sitesStoredTableAdapter.ClearBeforeFill = true;
+            // 
             // TestMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,8 +160,8 @@
             this.Text = "Test";
             this.Load += new System.EventHandler(this.TestMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSitesStoredInfo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kinestDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sitesStoredBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kinestDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

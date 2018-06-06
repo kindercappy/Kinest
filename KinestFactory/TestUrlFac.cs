@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KinestFactory
 {
-    public class TestIt : ITestIt
+    public class TestUrlFac : ITestIt
     {
         TestItBrowsers testItBrowsers;
         public void closeBrowsers()
