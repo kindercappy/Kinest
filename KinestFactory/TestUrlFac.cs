@@ -16,7 +16,7 @@ namespace KinestFactory
             testItBrowsers.closeBrowsers();
         }
 
-        public void TestUrl(string url)
+        public void OpenUrl(string url)
         {
             testItBrowsers = new TestItBrowsers(url);
         }

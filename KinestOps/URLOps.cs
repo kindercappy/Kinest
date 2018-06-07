@@ -13,6 +13,12 @@ namespace KinestOps
 {
     public class URLOps : IURLOps
     {
+        /** <summary>
+         * To delegate the URL storage operations
+         * </summary>
+         **/
+        private delegate int StoreUrl();
+
         private string protocol;
         private string url;
 
@@ -28,40 +34,48 @@ namespace KinestOps
         {
 
         }
-        /**
-         * Method to add url
-         * Objective is to add url only if it has not been added before
+        /** <summary>
+         * Method to add URL,
+         * Objective is to add URL only if it has not been added before.
+         * Will determine if the SQL DB is connectable, if yes it will add the URL in DB
+         * or it will store the URL in a JSON file (which later when db comes online will sync the URL's to DB)
+         * </summary>
          **/
         public string AddUrl()
         {
-            int checkIfUrlExists = this.checkIfUrlExists();
+            StoreUrl storeUrl;
+            int checkIfUrlExists = this.CheckIfUrlExists();
             int addedOrNot = 0;
             if (checkIfUrlExists == 1)
             {
-                return "Url already exists";
+                return Constants.URLExists;
             }
             if (Common.CanConnectToDB())
             {
-                addedOrNot = AddViaSP();
+                storeUrl = new StoreUrl(AddViaSP);
+                addedOrNot = storeUrl();
             }
             else
             {
-                addedOrNot = AddToJson();
+                storeUrl = new StoreUrl(AddToJson);
+                addedOrNot = storeUrl();
             }
-            string messageString = "Cant add URL";
+            string messageString = Constants.URLCantBeAdded;
             if (addedOrNot != 0)
             {
-                messageString = "URL Added Successfully";
+                messageString = Constants.URLAdditionSuccess;
             }
             return messageString;
         }
         /**
-        * Add the url via a stored procedure in the suitable table
-        **/
+         * <summary>
+            Add the url via a stored procedure in the suitable table
+            </summary>
+         **/
         private int AddViaSP()
         {
             if (!Common.CanConnectToDB()) return 0;
-                int addedOrNot = 0;
+            int addedOrNot = 0;
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = Common.GetConnection();
@@ -81,24 +95,37 @@ namespace KinestOps
             return addedOrNot;
         }
         /**
-         * Add the url to JSON
+         * <summary>
+            Add the url to JSON
+           </summary>
          **/
         private int AddToJson()
         {
             bool folderCreated = CreateJsonFolder();
+            int dataWrittenOrNot = 0;
             if (folderCreated)
             {
-                MessageBox.Show("Folder Created");
+                dataWrittenOrNot = WriteDataToJson();
+                MessageBox.Show(Constants.FolderCreated);
             }
             return 1;
+        }
+        private int WriteDataToJson()
+        {
+            // TODO Implement this functionality of writing data to json file
+            int dataWrittenOrNot = 0;
+
+            return dataWrittenOrNot;
         }
         private bool CreateJsonFolder()
         {
             // TODO In the process of implementing this functionality. Created the JSON folder succesfully. Complete the whole func of add a new file for a new url data. FileName: Date-time-seconds-url(regex the url to store it in normal form)
             bool jsonFolderCreated = false;
             var userName = System.Security.Principal.WindowsIdentity.GetCurrent();
-            var solutionDirName = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
-            string path = $@"{solutionDirName}\json"; // or whatever
+
+            string path = GetJsonDirPath();
+            //Return if json folder already exists
+            if (Directory.Exists(path)) return true;
             try
             {
                 if (!Directory.Exists(path))
@@ -115,10 +142,17 @@ namespace KinestOps
             return jsonFolderCreated;
         }
 
-        private int checkIfUrlExists()
+        private string GetJsonDirPath()
+        {
+            var solutionDirName = Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            string path = $@"{solutionDirName}\json";
+            return path;
+        }
+
+        private int CheckIfUrlExists()
         {
             int urlFoundOrNot = 0;
-            IEnumerable<string> urls = getUrlData();
+            IEnumerable<string> urls = GetUrlData();
             if (urls == null)
             {
                 return urlFoundOrNot;
@@ -136,7 +170,7 @@ namespace KinestOps
         /**
          * Get all the URL data
          **/
-        public List<string> getUrlData()
+        public List<string> GetUrlData()
         {
             if (!Common.CanConnectToDB()) return null;
             List<string> urls = new List<string>();
@@ -153,18 +187,12 @@ namespace KinestOps
                     urls.Add((string)reader["url"]);
                 }
             }
-            //foreach (var url in urls)
-            //{
-
-            //    Console.WriteLine(url);
-            //}
-            //Console.ReadLine();
             return urls;
         }
         /**
          * Get all the matching urls for the url initial supplied
          **/
-        public List<string> getMatchingUrls(string urlInitial)
+        public List<string> GetMatchingUrls(string urlInitial)
         {
             if (!Common.CanConnectToDB()) return null;
             List<string> urls = new List<string>();

@@ -30,14 +30,14 @@ namespace KinestFactory
             return meessage;
         }
 
-        public List<string> getMatchingUrls(string urlInitial)
+        public List<string> GetMatchingUrls(string urlInitial)
         {
-            return urlOps.getMatchingUrls(urlInitial);
+            return urlOps.GetMatchingUrls(urlInitial);
         }
 
-        public List<string> getUrlData()
+        public List<string> GetUrlData()
         {
-            return urlOps.getUrlData();
+            return urlOps.GetUrlData();
         }
     }
 }
