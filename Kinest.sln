@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinest", "Kinest\Kinest.csproj", "{334023C6-B4BE-4A26-AD73-617A339A2D51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinestLibrary", "KinestOps\KinestLibrary.csproj", "{43F4D989-4F97-4872-BF3D-E688C8A2B36F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinestOps", "KinestOps\KinestOps.csproj", "{43F4D989-4F97-4872-BF3D-E688C8A2B36F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinestFactory", "KinestFactory\KinestFactory.csproj", "{6320B9D9-0D2D-4A61-8C35-3347B84C113D}"
 EndProject

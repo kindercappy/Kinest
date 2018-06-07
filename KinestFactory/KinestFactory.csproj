@@ -49,9 +49,9 @@
       <Project>{A44A4222-ED6A-41FC-AAE2-18F52B564D35}</Project>
       <Name>KinestInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KinestOps\KinestLibrary.csproj">
+    <ProjectReference Include="..\KinestOps\KinestOps.csproj">
       <Project>{43f4d989-4f97-4872-bf3d-e688c8a2b36f}</Project>
-      <Name>KinestLibrary</Name>
+      <Name>KinestOps</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
