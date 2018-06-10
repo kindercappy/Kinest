@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KinestFactory;
@@ -28,6 +29,7 @@ namespace Kinest
             // TODO: This line of code loads data into the 'kinestDataSet.sitesStored' table. You can move, or remove it, as needed.
             //this.sitesStoredTableAdapter.Fill(this.kinestDataSet.sitesStored);
             PopulateUrlData(false);
+            
             this.cbProtocol.SelectedIndex = 0;
         }
 
@@ -38,7 +40,9 @@ namespace Kinest
             //string fullUrl = protocol + "://" + url;
             //testUrl = new TestUrlFac();
             //testUrl.TestUrl(fullUrl);
+            urlOpsFac = new URLOpsFac(this.cbProtocol.Text, this.cbUrl.Text);
             InsertUrl();
+            MessageBox.Show("After InsertUrl");
         }
 
         private void btnCloseBrowsers_Click(object sender, EventArgs e)
@@ -84,9 +88,8 @@ namespace Kinest
         }
         private void InsertUrl()
         {
-            urlOpsFac = new URLOpsFac(this.cbProtocol.Text, this.cbUrl.Text);
             string message = urlOpsFac.AddUrl();
-            MessageBox.Show(message);
+            //MessageBox.Show(message);
         }
 
         private void dgvSitesStoredInfo_CellContentClick(object sender, DataGridViewCellEventArgs e)
